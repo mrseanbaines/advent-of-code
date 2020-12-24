@@ -4,9 +4,8 @@ describe('Day 1: Report Repair', () => {
   it('Finds a number pair whose sum equals 2020, then multiplies those two numbers', () => {
     const numbers = [1721, 979, 366, 299, 675, 1456]
     const [a, b] = findSumParts(2020, numbers)
-    const expected = 514579
 
-    expect(a * b).toBe(expected)
+    expect(a * b).toBe(514579)
   })
 
   it(`Throws if the sum can't be found`, () => {
