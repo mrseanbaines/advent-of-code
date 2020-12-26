@@ -1,21 +1,33 @@
-export const findSumParts = (sum: number, numbers: number[]) => {
-  let index = 0
+export const findSumParts = (sum: number, numbers: number[], numItems: number) => {
+  const getMatchingSum = (combination: number[]) => combination.reduce((sum, num) => sum + num, 0) === sum
 
-  const findMatchingNumbers = (currentNum: number): [number, number] => {
-    const otherNumbers = numbers.filter(num => num !== currentNum)
-    const match = otherNumbers.find(num => currentNum + num === sum)
+  const match = combinations(numbers, numItems).find(getMatchingSum)
 
-    if (match) {
-      return [match, currentNum]
-    }
-
-    // If there's no next number, then we've gone through every combination and there is no match
-    if (!numbers[index + 1]) {
-      throw new Error(`Couldn't find sum from input numbers`)
-    }
-
-    return findMatchingNumbers(numbers[index++])
+  if (!match) {
+    throw new Error(`Couldn't find sum from input numbers`)
   }
 
-  return findMatchingNumbers(numbers[index])
+  return match
+}
+
+const combinations = (arr: number[], numItems: number) => {
+  if (numItems > arr.length) {
+    return []
+  }
+
+  if (numItems === arr.length) {
+    return [arr]
+  }
+
+  if (numItems === 1) {
+    return arr.map(value => [value])
+  }
+
+  return arr.reduce((acc: number[][], current, index) => {
+    const tail = combinations(arr.slice(index + 1), numItems - 1)
+
+    tail.forEach(value => acc.push([current, ...value]))
+
+    return acc
+  }, [])
 }
