@@ -59,7 +59,7 @@ const isValidEyeColor = (ecl: Maybe<string>) => !!ecl && ['amb', 'blu', 'brn', '
 
 const isValidPassportId = (pid: Maybe<string> | number) => !!pid && String(pid).length === 9
 
-const isValidPassport = (passport: Passport) => (
+const isValidPassport = (passport: Passport) =>
   isValidBirthYear(passport.byr) &&
   isValidIssueYear(passport.iyr) &&
   isValidExpirationYear(passport.eyr) &&
@@ -67,7 +67,6 @@ const isValidPassport = (passport: Passport) => (
   isValidHairColor(passport.hcl) &&
   isValidEyeColor(passport.ecl) &&
   isValidPassportId(passport.pid)
-)
 
 export const getValidPassports = (list: string) => {
   const passports = parseList(list)
