@@ -8,7 +8,7 @@ describe('Day 2: Password Philosophy', () => {
   `
 
   describe('Min-max character count', () => {
-    it('given a list, tells how many passwords are valid', () => {
+    it('given a list, returns only valid passwords', () => {
       const result = getValidPasswords1(list)
       const expected = 2
 
@@ -17,7 +17,7 @@ describe('Day 2: Password Philosophy', () => {
   })
 
   describe('Characters in given positions', () => {
-    it('given a list, tells how many passwords are valid', () => {
+    it('given a list, returns only valid passwords', () => {
       const result = getValidPasswords2(list)
       const expected = 1
 
