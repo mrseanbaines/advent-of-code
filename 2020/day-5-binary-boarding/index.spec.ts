@@ -1,4 +1,4 @@
-import { findSeatPosition } from './'
+import { findSeatPosition, getSeatIDFromPosition, findMissingSeat } from './'
 
 describe('Day 5: Binary Boarding', () => {
   it.each([
@@ -9,5 +9,15 @@ describe('Day 5: Binary Boarding', () => {
     const result = findSeatPosition(code)
 
     expect(result).toStrictEqual(expected)
+  })
+
+  it('Gets seat ID from position', () => {
+    expect(getSeatIDFromPosition(findSeatPosition('FBFBBFFRLR'))).toBe(357)
+  })
+
+  it('Finds the missing seat ID', () => {
+    const codes = ['BFFFBFFLRL', 'BFFFBFFLRR', 'BFFFBFFRLR', 'BFFFBFFRRL']
+
+    expect(findMissingSeat(codes)).toBe(548)
   })
 })

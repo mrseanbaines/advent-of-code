@@ -59,3 +59,13 @@ export const findSeatPosition = (code: string) => {
 
   return Object.values(state).flat()
 }
+
+export const getSeatIDFromPosition = ([row, col]: number[]) => row * 8 + col
+
+const range = (start: number, end: number) => Array.from(Array(end - start + 1), (_, i) => start + i)
+
+export const findMissingSeat = (codes: string[]) => {
+  const result = codes.map(findSeatPosition).map(getSeatIDFromPosition)
+
+  return range(result[0], result.slice(-1)[0]).find(x => !result.includes(x))
+}
