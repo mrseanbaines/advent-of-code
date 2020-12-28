@@ -12,8 +12,6 @@ const parseList = (list: string) => {
 
 const getUniqueItems = (arr: any[]) => Array.from(new Set(arr))
 
-const getCommonItems = <T>(value: T, i: number, arr: T[]) => arr.indexOf(value) !== i
-
 export const getUniqueAnswerCounts = (list: string) => {
   return parseList(list).reduce((sum, group) => {
     const uniqueAnswers = getUniqueItems(group.flat())
