@@ -6,9 +6,7 @@ type State = {
   col: number[]
 }
 
-type Char = 'F' | 'B' | 'L' | 'R'
-
-const reducer = (state: State, char: Char) => {
+const reducer = (state: State, char: string) => {
   switch (char) {
     case 'F': {
       return {
@@ -54,7 +52,7 @@ export const findSeatPosition = (code: string) => {
   }
 
   code.split('').forEach(char => {
-    state = reducer(state, char as Char)
+    state = reducer(state, char)
   })
 
   return Object.values(state).flat()
