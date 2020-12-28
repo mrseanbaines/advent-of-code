@@ -53,7 +53,7 @@ const isValidHeight = (hgt: Maybe<string>) => {
   return false
 }
 
-const isValidHairColor = (hcl: Maybe<string>) => !!hcl?.match(/^#[0-9a-f]{6}/gi)
+const isValidHairColor = (hcl: Maybe<string>) => !!hcl && RegExp('#[0-9a-f]{6}', 'i').test(hcl)
 
 const isValidEyeColor = (ecl: Maybe<string>) => !!ecl && ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(ecl)
 
