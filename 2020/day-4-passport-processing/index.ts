@@ -30,7 +30,7 @@ type Passport = {
 
 type Maybe<T> = T | null | undefined
 
-const isWithinRange = (value: string | number, start: string | number, end: string | number) =>
+const isWithinRange = (value: string | number, start: number, end: number) =>
   Number(value) >= start && Number(value) <= end
 
 const isValidBirthYear = (byr: Maybe<string | number>) => !!byr && isWithinRange(byr, 1920, 2002)
