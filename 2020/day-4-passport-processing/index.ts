@@ -57,7 +57,7 @@ const isValidHairColor = (hcl: Maybe<string>) => !!hcl && RegExp('#[0-9a-f]{6}',
 
 const isValidEyeColor = (ecl: Maybe<string>) => !!ecl && ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(ecl)
 
-const isValidPassportId = (pid: Maybe<string> | number) => !!pid && String(pid).length === 9
+const isValidPassportId = (pid: Maybe<string> | number) => !!pid && RegExp('[0-9]{9}', 'i').test(pid.toString())
 
 const isValidPassport = (passport: Passport) =>
   isValidBirthYear(passport.byr) &&
