@@ -68,8 +68,4 @@ const isValidPassport = (passport: Passport) =>
   isValidEyeColor(passport.ecl) &&
   isValidPassportId(passport.pid)
 
-export const getValidPassports = (list: string) => {
-  const passports = parseList(list)
-
-  return passports.filter(isValidPassport)
-}
+export const getValidPassports = (list: string) => parseList(list).filter(isValidPassport)
