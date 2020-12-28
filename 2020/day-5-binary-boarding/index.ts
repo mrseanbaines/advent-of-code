@@ -46,14 +46,12 @@ export const findSeatPosition = (code: string) => {
   const totalRows = Array.from(Array(128), (_, i) => i)
   const totalCols = Array.from(Array(8), (_, i) => i)
 
-  let state = {
+  let initialState = {
     row: totalRows,
     col: totalCols,
   }
 
-  code.split('').forEach(char => {
-    state = reducer(state, char)
-  })
+  const state = code.split('').reduce((state, char) => reducer(state, char), initialState)
 
   return Object.values(state).flat()
 }
